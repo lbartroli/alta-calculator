@@ -1,0 +1,44 @@
+{
+  "name": "alta-calculator",
+  "version": "1.0.0",
+  "description": "Test project to implement react with next.js, express, graphql, mongodb, JWT Auth and more...",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "build": "next build",
+    "start:prod": "cross-env NODE_ENV=production node server.js",
+    "deploy": "next build && now --public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbartroli/alta-calculator.git"
+  },
+  "keywords": [
+    "next.js",
+    "express",
+    "graphql",
+    "mongodb",
+    "JWT"
+  ],
+  "author": "DJ/Chori",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lbartroli/alta-calculator/issues"
+  },
+  "homepage": "https://github.com/lbartroli/alta-calculator#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "isomorphic-unfetch": "^2.0.0",
+    "next": "^6.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.1"
+  }
+}
