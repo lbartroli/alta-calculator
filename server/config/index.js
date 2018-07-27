@@ -1,0 +1,1 @@
+exports.dbConf = require('./db');

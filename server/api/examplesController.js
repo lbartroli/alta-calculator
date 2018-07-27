@@ -1,23 +1,33 @@
 const express = require('express');
 
-const ExamplesController = (io) => {
-    const router = express.Router();
-    // fake DB
-    const messages = [{id: 123123, value: 'Test message'}];
-    
-    // socket.io server
-    io.on('connection', (socket) => {
-        socket.on('message', (data) => {
-            messages.push(data);
-            socket.broadcast.emit('message', data);
-        });
-    });
-    
-    router.get('/messages', (req, res) => {
-        res.json(messages);
-    });
+class ExamplesController {
+  constructor(io) {
+    this.io = io;
+    this.router = express.Router();
+    this.messages = [{ id: 123123, value: 'Test message 123' }];
 
-    return router;
+    this._setSocketIO();
+    this._setRoutes();
+  }
+
+  getRouter() {
+    return this.router;
+  }
+
+  _setSocketIO() {
+    this.io.on('connection', socket => {
+      socket.on('message', data => {
+        this.messages.push(data);
+        socket.broadcast.emit('message', data);
+      });
+    });
+  }
+
+  _setRoutes() {
+    this.router.get('/messages', (req, res) => {
+      res.json(this.messages);
+    });
+  }
 }
 
 module.exports = ExamplesController;

@@ -1,18 +1,25 @@
-import Link from "next/link";
+import Link from 'next/link';
+import { GlobalContext } from './globalContext';
 
 const Nav = () => (
-    <div className="nav">
+  <GlobalContext.Consumer>
+    {context => (
+      <div className="nav">
         <Link href="/">
-            <a>Home</a>
+          <a>Home</a>
         </Link>
         <Link href="/examples">
-            <a>Examples</a>
+          <a>Examples</a>
         </Link>
+        <span>{context.userLogged}</span>
         <style jsx>{`
-            a {
-                margin-right: 15px;
-            }
+          a {
+            margin-right: 15px;
+          }
         `}</style>
-    </div>
+      </div>
+    )}
+  </GlobalContext.Consumer>
 );
+
 export default Nav;
